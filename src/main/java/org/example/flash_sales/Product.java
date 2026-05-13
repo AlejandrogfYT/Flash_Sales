@@ -1,4 +1,8 @@
 package org.example.flash_sales;
 
-public class Product {
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Product extends SellableItem {
 }
