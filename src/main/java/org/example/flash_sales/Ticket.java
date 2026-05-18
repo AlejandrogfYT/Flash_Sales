@@ -17,6 +17,13 @@ public class Ticket extends SellableItem{
     @NotNull
     private LocalDate date;
 
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 
     public Event getEvent() {
         return event;
