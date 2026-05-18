@@ -5,7 +5,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 public class Ticket extends SellableItem{
@@ -15,7 +15,7 @@ public class Ticket extends SellableItem{
     private Event event;
 
     @NotNull
-    private Date date;
+    private LocalDate date;
 
 
     public Event getEvent() {

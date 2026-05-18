@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "events")
@@ -20,10 +20,10 @@ public class Event {
     private User user;
 
     @NotNull
-    private Date start_date;
+    private LocalDate start_date;
 
     @NotNull
-    private Date end_date;
+    private LocalDate end_date;
 
     @NotNull
     @Min(0)
@@ -80,19 +80,19 @@ public class Event {
         this.total_tickets = total_tickets;
     }
 
-    public Date getEnd_date() {
+    public LocalDate getEnd_date() {
         return end_date;
     }
 
-    public void setEnd_date(Date end_date) {
+    public void setEnd_date(LocalDate end_date) {
         this.end_date = end_date;
     }
 
-    public Date getStart_date() {
+    public LocalDate getStart_date() {
         return start_date;
     }
 
-    public void setStart_date(Date start_date) {
+    public void setStart_date(LocalDate start_date) {
         this.start_date = start_date;
     }
 
