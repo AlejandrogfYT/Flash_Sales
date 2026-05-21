@@ -1,4 +1,4 @@
-package org.example.flash_sales;
+package org.example.flash_sales.Models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;

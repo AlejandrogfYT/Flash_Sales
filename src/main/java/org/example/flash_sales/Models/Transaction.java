@@ -1,8 +1,9 @@
-package org.example.flash_sales;
+package org.example.flash_sales.Models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import org.example.flash_sales.Enums.Status;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;

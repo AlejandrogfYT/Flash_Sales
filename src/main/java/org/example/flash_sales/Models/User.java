@@ -1,8 +1,9 @@
-package org.example.flash_sales;
+package org.example.flash_sales.Models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import org.example.flash_sales.Enums.UserType;
 
 @Entity
 @Table(name = "users")

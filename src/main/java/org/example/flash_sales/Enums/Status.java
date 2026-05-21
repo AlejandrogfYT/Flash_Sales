@@ -1,4 +1,4 @@
-package org.example.flash_sales;
+package org.example.flash_sales.Enums;
 
 public enum Status {
     PENDING,
