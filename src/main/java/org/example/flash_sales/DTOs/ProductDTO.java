@@ -1,20 +1,39 @@
 package org.example.flash_sales.DTOs;
 
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
+import org.example.flash_sales.Models.Product;
 import org.example.flash_sales.Models.User;
 
 import java.math.BigDecimal;
 
 public record ProductDTO(
+        Long id,
         String name,
         BigDecimal price,
         Long stock,
         Long userId,
         float offer
-
 ) {
+    public static ProductDTO fromEntity(Product product) {
+        if (product == null) {
+            return null;
+        }
+        return new ProductDTO(
+                product.getId(),
+                product.getName(),
+                product.getPrice(),
+                product.getStock(),
+                product.getUser() != null ? product.getUser().getId() : null,
+                product.getOffer()
+        );
+    }
+
+    public Product toEntity(User user) {
+        Product product = new Product();
+        product.setName(this.name());
+        product.setPrice(this.price());
+        product.setStock(this.stock());
+        product.setUser(user);
+        product.setOffer(this.offer());
+        return product;
+    }
 }
