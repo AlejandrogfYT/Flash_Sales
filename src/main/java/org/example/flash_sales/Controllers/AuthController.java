@@ -1,6 +1,10 @@
 package org.example.flash_sales.Controllers;
 
+import org.example.flash_sales.DTOs.LoginRequest;
+import org.example.flash_sales.DTOs.LoginResponse;
+import org.example.flash_sales.DTOs.RegisterRequest;
 import org.example.flash_sales.DTOs.UserDTO;
+import org.example.flash_sales.Services.KeycloakService;
 import org.example.flash_sales.Services.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,18 +13,25 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
-public class UserController {
+public class AuthController {
 
     private final UserService userService;
+    private final KeycloakService keycloakService;
 
-    public UserController(UserService userService) {
+    public AuthController(UserService userService, KeycloakService keycloakService) {
         this.userService = userService;
+        this.keycloakService = keycloakService;
     }
 
     @PostMapping("/register")
-    public ResponseEntity<UserDTO> register(@RequestBody UserDTO value) {
-        UserDTO created = userService.createUser(value);
-        return ResponseEntity.ok(created);
+    public ResponseEntity<Void> register(@RequestBody RegisterRequest request) {
+        keycloakService.register(request);
+        return ResponseEntity.status(201).build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
+        return ResponseEntity.ok(keycloakService.login(request));
     }
 
     @GetMapping("/users")
