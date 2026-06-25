@@ -3,6 +3,8 @@ package org.example.flash_sales.Controllers;
 import org.example.flash_sales.DTOs.EventDTO;
 import org.example.flash_sales.Services.EventService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +20,9 @@ public class EventController {
     }
 
     @PostMapping
-    public ResponseEntity<EventDTO> createEvent(@RequestBody EventDTO value) {
-        return ResponseEntity.ok(eventService.createEvent(value));
+    public ResponseEntity<EventDTO> createEvent(@RequestBody EventDTO value, @AuthenticationPrincipal Jwt jwt) {
+        String userId = jwt.getSubject();
+        return ResponseEntity.ok(eventService.createEvent(value, userId));
     }
 
     @GetMapping

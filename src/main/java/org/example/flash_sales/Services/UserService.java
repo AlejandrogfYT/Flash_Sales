@@ -26,7 +26,7 @@ public class UserService {
         return UserDTO.fromEntity(saved);
     }
 
-    public UserDTO getUser(Long id) {
+    public UserDTO getUser(String id) {
         User user = userRepository.findById(id).orElseThrow();
         return UserDTO.fromEntity(user);
     }
@@ -37,17 +37,16 @@ public class UserService {
                 .toList();
     }
 
-    public UserDTO updateUser(Long id, UserDTO dto) {
+    public UserDTO updateUser(String id, UserDTO dto) {
         User user = userRepository.findById(id).orElseThrow();
         user.setUsername(dto.username());
         user.setEmail(dto.email());
-        user.setPassword(dto.password());
         user.setType(dto.type());
         User saved = userRepository.save(user);
         return UserDTO.fromEntity(saved);
     }
 
-    public void deleteUser(Long id) {
+    public void deleteUser(String id) {
         userRepository.deleteById(id);
     }
 }

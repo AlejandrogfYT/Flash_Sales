@@ -4,10 +4,9 @@ import org.example.flash_sales.Enums.UserType;
 import org.example.flash_sales.Models.User;
 
 public record UserDTO(
-        Long id,
+        String id,
         String username,
         String email,
-        String password,
         UserType type
 ) {
     public static UserDTO fromEntity(User user) {
@@ -18,7 +17,6 @@ public record UserDTO(
                 user.getId(),
                 user.getUsername(),
                 user.getEmail(),
-                user.getPassword(),
                 user.getType()
         );
     }
@@ -27,7 +25,6 @@ public record UserDTO(
         User user = new User();
         user.setUsername(this.username());
         user.setEmail(this.email());
-        user.setPassword(this.password());
         user.setType(this.type());
         return user;
     }

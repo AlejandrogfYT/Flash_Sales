@@ -20,8 +20,8 @@ public class EventService {
         this.userRepository = userRepository;
     }
 
-    public EventDTO createEvent(EventDTO dto) {
-        User user = userRepository.findById(dto.userId()).orElseThrow();
+    public EventDTO createEvent(EventDTO dto, String userId) {
+        User user = userRepository.findById(userId).orElseThrow();
         Event event = dto.toEntity(user);
         Event saved = eventRepository.save(event);
         return EventDTO.fromEntity(saved);

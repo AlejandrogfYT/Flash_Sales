@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public record EventDTO(
         Long id,
-        Long userId,
+        String userId,
         LocalDate start_date,
         LocalDate end_date,
         Long total_tickets,

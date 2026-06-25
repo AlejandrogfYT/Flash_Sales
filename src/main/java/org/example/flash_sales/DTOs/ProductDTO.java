@@ -10,7 +10,7 @@ public record ProductDTO(
         String name,
         BigDecimal price,
         Long stock,
-        Long userId,
+        String userId,
         float offer
 ) {
     public static ProductDTO fromEntity(Product product) {

@@ -12,7 +12,7 @@ public record TicketDTO(
         String name,
         BigDecimal price,
         Long stock,
-        Long userId,
+        String userId,
         Long eventId,
         LocalDate date
 ) {

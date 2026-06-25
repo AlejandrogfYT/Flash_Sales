@@ -12,7 +12,7 @@ public record TransactionDTO(
         Long sellableItemId,
         Long amount,
         Instant instant,
-        Long userId,
+        String userId,
         Status status
 ) {
     public static TransactionDTO fromEntity(Transaction transaction) {
