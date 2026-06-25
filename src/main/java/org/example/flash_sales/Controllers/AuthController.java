@@ -29,17 +29,17 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
+    public ResponseEntity<UserDTO> getUser(@PathVariable String id) {
         return ResponseEntity.ok(userService.getUser(id));
     }
 
     @PutMapping("/users/{id}")
-    public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @RequestBody UserDTO value) {
+    public ResponseEntity<UserDTO> updateUser(@PathVariable String id, @RequestBody UserDTO value) {
         return ResponseEntity.ok(userService.updateUser(id, value));
     }
 
     @DeleteMapping("/users/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteUser(@PathVariable String id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
