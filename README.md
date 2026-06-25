@@ -33,6 +33,20 @@ docker compose up -d
 
 The API starts at `http://localhost:8080`.
 
+## Authentication
+
+Uses **Keycloak** as the OAuth2/JWT issuer (`myrealm`). All requests (except `/register` and `/login`) require a valid JWT in the `Authorization: Bearer <token>` header.
+
+| Endpoint | Auth | Notes |
+|----------|------|-------|
+| `POST /register` | Public | Creates user in Keycloak |
+| `POST /login` | Public | Returns JWT (`access_token`, `refresh_token`) |
+| All other endpoints | Authenticated | Any valid JWT holder |
+
+Role-based or ownership-based authorization is **not enforced** — every authenticated user has the same access.
+
+Users are synced to the local `users` table on first authenticated request via `UserSyncFilter`.
+
 ## API Endpoints
 
 | Method | Endpoint | Description |
